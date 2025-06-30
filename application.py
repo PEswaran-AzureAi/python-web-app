@@ -3,4 +3,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "<html><body><h1>Test Application</h1></body></html>\n"
+    return "<html><body><h1>Test aNew workflow Application</h1></body></html>\n"
