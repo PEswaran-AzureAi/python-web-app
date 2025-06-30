@@ -1,13 +1,18 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, render_template
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 
+load_dotenv()
+
+# Initialize the Flask application
 app = Flask(__name__)
 
-uri = "mongodb+srv://parv08:g5RcqDbZugmLlN23@azurecluster01.u6onopw.mongodb.net/?retryWrites=true&w=majority&appName=AzureCluster01"
+CONNECTION_STRING = os.environ.get("COSMOS_CONNECTION_STRING")
 
 # Create a new client and connect to the server
-client = MongoClient(uri, server_api=ServerApi('1'))
+client = MongoClient(CONNECTION_STRING, server_api=ServerApi('1'))
 # Send a ping to confirm a successful connection
 try:
     client.admin.command('ping')
